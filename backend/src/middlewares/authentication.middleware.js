@@ -55,3 +55,26 @@ export const generateToken = (req, res, next) => {
     }
   );
 };
+
+export const verifyToken = (req, res, next) => {
+  const token = req.headers["x-access-token"];
+
+  if (!token) {
+    next({
+      statusCode: StatusCodes.FORBIDDEN,
+      message: "Token not found",
+    });
+  }
+  jwt.verify(JSON.parse(token), process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      console.log(err);
+      next({
+        statusCode: StatusCodes.UNAUTHORIZED,
+        message: "Unauthorized access",
+      });
+    }
+
+    req.decodedUser = { id: decoded.id, email: decoded.email };
+    next();
+  });
+};
