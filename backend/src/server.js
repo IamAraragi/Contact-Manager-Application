@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import userRoute from "./routes/userRoutes.js";
+import contactRoute from "./routes/contactRoutes.js";
 import {
   errorHandler,
   notFoundErrorHandler,
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 router.use("/user", userRoute);
+router.use("/contacts", contactRoute);
 app.use("/api", router);
 
 app.use(notFoundErrorHandler, errorHandler);
