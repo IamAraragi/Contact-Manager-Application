@@ -65,9 +65,8 @@ export const verifyToken = (req, res, next) => {
       message: "Token not found",
     });
   }
-  jwt.verify(JSON.parse(token), process.env.JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
-      console.log(err);
       next({
         statusCode: StatusCodes.UNAUTHORIZED,
         message: "Unauthorized access",
