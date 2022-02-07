@@ -1,5 +1,6 @@
 import { combineReducers, createStore } from "redux";
 import { authReducer } from "./reducer/auth.reducers";
+import { contactsReducer } from "./reducer/contacts.reduer";
 
 // const initialState = {
 //   auth: {
@@ -10,6 +11,7 @@ import { authReducer } from "./reducer/auth.reducers";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  contacts: contactsReducer,
 });
 
 const store = createStore(rootReducer);
