@@ -45,7 +45,10 @@ export default function Table(props) {
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">
                   Edit
                 </button>
-                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">
+                <button
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded"
+                  onClick={(e) => props.handleDeleteButtonClick(e, contact.id)}
+                >
                   Delete
                 </button>
                 <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-2 border border-gray-500 rounded">
