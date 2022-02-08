@@ -5,6 +5,7 @@ import Login from "./Pages/Authentication/Login";
 import PrivateRoute from "./Components/common/PrivateRoute";
 import Register from "./Pages/Authentication/Register";
 import AddContacts from "./Pages/Contacts/AddContacts";
+import EditContacts from "./Pages/Contacts/EditContacts";
 
 function App() {
   return (
@@ -28,6 +29,15 @@ function App() {
             element={
               <PrivateRoute>
                 <AddContacts />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/edit"
+            element={
+              <PrivateRoute>
+                <EditContacts />
               </PrivateRoute>
             }
           />

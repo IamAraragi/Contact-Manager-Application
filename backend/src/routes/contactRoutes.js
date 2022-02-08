@@ -33,20 +33,4 @@ router.put(
   ContactController.updateContactById
 );
 
-// router.post("/upload", singleUploadCtrl, async (req, res) => {
-//   try {
-//     if (!req.file) {
-//       throw new Error("Image is not presented!");
-//     }
-//     console.log(req.body);
-//     const file64 = bufferToBase64(req.file);
-//     const uploadResult = await uploadCloud(file64.content);
-//     console.log(uploadResult.secure_url);
-
-//     return res.json({ message: "Hurraaay" });
-//   } catch (e) {
-//     return res.status(422).send({ message: e.message });
-//   }
-// });
-
 export default router;

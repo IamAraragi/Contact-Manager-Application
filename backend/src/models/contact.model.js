@@ -18,7 +18,7 @@ export const addContact = async (contactInfo) => {
 
 export const getAllContacts = async (userId) => {
   const contacts = await db("Contact")
-    .select("id", "name", "phone", "photo", "email", "address")
+    .select("id", "name", "phone", "photo", "email", "address", "favorites")
     .where({ user_id: userId });
   return contacts;
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Header() {
+export default function Header(props) {
   const tailwindClasses = {
     headerContainer: "flex justify-between items-center bg-blue-900 p-2",
     headerTitle:
@@ -15,7 +15,11 @@ export default function Header() {
           CONTACT MANAGER
         </a>
       </div>
-      <button type="button" className={tailwindClasses.buttonContainer}>
+      <button
+        type="button"
+        className={tailwindClasses.buttonContainer}
+        onClick={(e) => props.handleLogOutButtonClick(e)}
+      >
         LOGOUT
       </button>
     </div>

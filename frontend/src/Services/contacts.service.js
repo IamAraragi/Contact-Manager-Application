@@ -1,19 +1,18 @@
 import axios from "axios";
-// import authHeader from "../utils/authHeader";
 import authHeader from "../utils/authHeader";
-// import authHeader from "../utils/authHeader";
+
 const tokenHeader = authHeader();
 export const getAllContacts = async () => {
   const response = await axios.get(process.env.REACT_APP_API_URL + "contacts", {
     headers: tokenHeader,
   });
   if (response.data) {
-    localStorage.setItem("contacts", response.data);
+    localStorage.setItem("contacts", JSON.stringify(response.data));
   }
   return response.data;
 };
 
-export const addContants = async (contactInfo) => {
+export const addContacts = async (contactInfo) => {
   const response = await axios.post(
     process.env.REACT_APP_API_URL + "contacts",
     contactInfo,
@@ -32,6 +31,18 @@ export const addContants = async (contactInfo) => {
 export const deleteContacts = async (contactId) => {
   const response = await axios.delete(
     process.env.REACT_APP_API_URL + "contacts/" + contactId,
+    {
+      headers: tokenHeader,
+    }
+  );
+
+  return response.data;
+};
+
+export const updateContacts = async (contactId, contactInfo) => {
+  const response = await axios.put(
+    process.env.REACT_APP_API_URL + "contacts/" + contactId,
+    contactInfo,
     {
       headers: tokenHeader,
     }
