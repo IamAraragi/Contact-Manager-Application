@@ -2,6 +2,7 @@ import {
   LOGIN_FAIL,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  LOGOUT,
   REGISTER_FAILURE,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
@@ -29,4 +30,8 @@ export const registerSuccess = () => {
 
 export const registerFailure = () => {
   return { type: REGISTER_FAILURE };
+};
+
+export const logout = () => {
+  return { type: LOGOUT };
 };

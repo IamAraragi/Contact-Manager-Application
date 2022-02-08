@@ -42,7 +42,10 @@ export default function Table(props) {
                 {contact.phone}
               </td>
               <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded"
+                  onClick={(e) => props.handleEditButtonClick(e, contact.id)}
+                >
                   Edit
                 </button>
                 <button
@@ -51,8 +54,13 @@ export default function Table(props) {
                 >
                   Delete
                 </button>
-                <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-2 border border-gray-500 rounded">
-                  Favorite
+                <button
+                  className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-2 border border-gray-500 rounded"
+                  onClick={(e) =>
+                    props.handleFavoriteButtonClick(e, contact.id, contact)
+                  }
+                >
+                  {contact.favorites ? "Favorited" : "Favorite"}
                 </button>
               </td>
             </tr>

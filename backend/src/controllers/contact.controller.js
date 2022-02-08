@@ -6,6 +6,7 @@ export const addContact = async (req, res, next) => {
     const id = await ContactService.addContact(req.body);
     res.status(StatusCodes.CREATED).json(id);
   } catch (err) {
+    console.log(err);
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
       message: "Contact Information cannot be added",

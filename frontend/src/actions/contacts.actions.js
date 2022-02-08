@@ -8,6 +8,9 @@ import {
   GETALL_FAILURE,
   GETALL_REQUEST,
   GETALL_SUCCESS,
+  UPDATE_FAILURE,
+  UPDATE_REQUEST,
+  UPDATE_SUCCESS,
 } from "../constants/contacts.constants";
 
 export const getAllRequest = () => {
@@ -44,4 +47,16 @@ export const deleteContactSucess = () => {
 
 export const deleteContactFailure = () => {
   return { type: DELETE_FAILURE };
+};
+
+export const updateContactRequest = () => {
+  return { type: UPDATE_REQUEST };
+};
+
+export const updateContactSuccess = () => {
+  return { type: UPDATE_SUCCESS };
+};
+
+export const updateContactFailure = () => {
+  return { type: UPDATE_FAILURE };
 };

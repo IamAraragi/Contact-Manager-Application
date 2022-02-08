@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import AuthenticationTitle from "../../Components/Authentication/AuthenticationTitle";
 import InputField from "../../Components/common/InputField";
 import Button from "../../Components/common/Button";
-import PhotoUpload from "../../Components/common/PhotoUpload";
-import { addContacts } from "../../Services/contacts.service";
+import { useLocation } from "react-router";
+import { selectedContact } from "../../utils/selectedContact";
+import { updateContacts } from "../../Services/contacts.service";
 import {
-  addContactFailure,
-  addContactRequest,
-  addContactSuccess,
+  updateContactFailure,
+  updateContactRequest,
+  updateContactSuccess,
 } from "../../actions/contacts.actions";
 
-export default function AddContacts() {
-  const [state, setState] = useState({
-    image: "",
-  });
+export default function EditContacts(props) {
+  const { state } = useLocation();
+  const { id } = state;
+  const [contactInfo, setContactInfo] = useState({});
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,53 +28,56 @@ export default function AddContacts() {
     btnContainer: "flex justify-center items-center mt-6",
   };
 
-  const handleOnChange = (e) => {
-    setState({ image: e.target.files[0] });
-  };
-
   const handleFormSubmit = async (e) => {
     try {
       e.preventDefault();
-      dispatch(addContactRequest());
+      dispatch(updateContactRequest());
 
       let email = e.target.elements.email?.value;
       let name = e.target.elements.name?.value;
       let phone = e.target.elements.phone?.value;
       let address = e.target.elements.address?.value;
-      let user_id = JSON.parse(localStorage.getItem("user")).id;
 
-      const formData = new FormData();
-      formData.append("user_id", user_id);
-      formData.append("name", name);
+      const contacts = {};
+      contacts["name"] = name;
+      contacts["phone"] = phone;
+
       if (email) {
-        formData.append("email", email);
+        contacts["email"] = email;
       }
-      formData.append("phone", phone);
-      if (address) {
-        formData.append("address", address);
-      }
-      formData.append("image", state.image);
 
-      let data = await addContacts(formData);
+      if (address) {
+        contacts["address"] = address;
+      }
+
+      contacts["photo"] = contactInfo.photo;
+
+      let data = await updateContacts(id, contacts);
       if (data) {
-        dispatch(addContactSuccess());
+        dispatch(updateContactSuccess());
         navigate("/");
       }
     } catch (err) {
-      dispatch(addContactFailure());
+      dispatch(updateContactFailure());
     }
   };
+
+  useEffect(() => {
+    const contacts = selectedContact(id);
+    setContactInfo(contacts);
+  }, []);
 
   return (
     <div>
       <div className={tailwindClasses.formContainer}>
         <AuthenticationTitle
           titleClass={tailwindClasses.formHeading}
-          title="Add Contacts"
+          title="Edit Contacts"
         />
 
         <form onSubmit={handleFormSubmit}>
           <InputField
+            defaultValue={contactInfo.name}
             htmlFor="name"
             id="name"
             label="Name"
@@ -81,6 +86,7 @@ export default function AddContacts() {
           />
 
           <InputField
+            defaultValue={contactInfo.email}
             htmlFor="email"
             id="email"
             label="Email"
@@ -89,6 +95,7 @@ export default function AddContacts() {
           />
 
           <InputField
+            defaultValue={contactInfo.address}
             htmlFor="address"
             id="address"
             label="Address"
@@ -97,6 +104,7 @@ export default function AddContacts() {
           />
 
           <InputField
+            defaultValue={contactInfo.phone}
             htmlFor="phone"
             id="phone"
             label="phone"
@@ -104,10 +112,8 @@ export default function AddContacts() {
             placeholder="Contact Phone"
           />
 
-          <PhotoUpload handleOnChange={handleOnChange} />
-
           <div className={tailwindClasses.btnContainer}>
-            <Button buttonLabel="Add" />
+            <Button buttonLabel="Edit" />
           </div>
         </form>
       </div>
