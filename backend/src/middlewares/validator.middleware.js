@@ -9,7 +9,7 @@ export const validator = (schema) => async (req, res, next) => {
   } catch (err) {
     next({
       statusCode: StatusCodes.BAD_REQUEST,
-      message: "Email or Password is not valid",
+      message: err.message,
     });
   }
 };

@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 router.use("/user", userRoute);
 router.use("/contacts", contactRoute);
+
 app.use("/api", router);
 
 app.use(notFoundErrorHandler, errorHandler);

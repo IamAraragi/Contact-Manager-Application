@@ -33,10 +33,9 @@ export const deleteContactById = async (req, res, next) => {
         message: "Could not find the contact with that id",
       });
     }
+    let contacts = await ContactService.getAllContacts(req.decodedUser.id);
 
-    return res.status(StatusCodes.OK).json({
-      message: "Contact deleted",
-    });
+    return res.status(StatusCodes.OK).json(contacts);
   } catch (err) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,

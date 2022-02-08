@@ -1,8 +1,7 @@
 import db from "../../db/db.js";
 
 export const addContact = async (contactInfo) => {
-  const { user_id, name, phone, photo, email, address, favorites } =
-    contactInfo;
+  const { user_id, name, phone, photo, email, address } = contactInfo;
   const [id] = await db("Contact")
     .insert({
       user_id,
@@ -11,7 +10,6 @@ export const addContact = async (contactInfo) => {
       photo,
       email,
       address,
-      favorites,
     })
     .returning("id");
 
