@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { logout } from "../../actions/auth.actions";
 import {
   deleteContactFailure,
   deleteContactRequest,
@@ -26,13 +25,6 @@ export default function Home() {
   const [contacts, setContacts] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleLogOutButtonClick = (e) => {
-    e.preventDefault();
-    localStorage.removeItem("user");
-    localStorage.removeItem("contacts");
-    dispatch(logout());
-  };
 
   const addContactClickHandler = (e) => {
     e.preventDefault();
@@ -95,7 +87,7 @@ export default function Home() {
 
   return (
     <div>
-      <Header handleLogOutButtonClick={handleLogOutButtonClick} />
+      <Header />
       <Table
         contacts={contacts}
         handleDeleteButtonClick={handleDeleteButtonClick}

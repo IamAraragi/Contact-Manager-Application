@@ -1,11 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router";
+import Header from "../../Components/common/Header";
 
 export default function ViewContacts() {
   const { state } = useLocation();
   const { name, address, phone, photo, email } = state;
   return (
     <div>
+      <Header />
       <div className="container mx-auto my-5 p-5">
         <div className="md:flex no-wrap md:-mx-2 ">
           <div className="w-full md:w-3/12 md:mx-2">

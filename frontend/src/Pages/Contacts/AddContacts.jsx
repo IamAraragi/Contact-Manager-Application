@@ -11,6 +11,7 @@ import {
   addContactRequest,
   addContactSuccess,
 } from "../../actions/contacts.actions";
+import Header from "../../Components/common/Header";
 
 export default function AddContacts() {
   const [state, setState] = useState({
@@ -65,6 +66,7 @@ export default function AddContacts() {
 
   return (
     <div>
+      <Header />
       <div className={tailwindClasses.formContainer}>
         <AuthenticationTitle
           titleClass={tailwindClasses.formHeading}
