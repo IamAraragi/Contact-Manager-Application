@@ -7,6 +7,7 @@ import Register from "./Pages/Authentication/Register";
 import AddContacts from "./Pages/Contacts/AddContacts";
 import EditContacts from "./Pages/Contacts/EditContacts";
 import Error404 from "./Pages/Error404";
+import ViewContacts from "./Pages/Contacts/ViewContacts";
 
 function App() {
   return (
@@ -38,6 +39,15 @@ function App() {
             element={
               <PrivateRoute>
                 <EditContacts />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/view"
+            element={
+              <PrivateRoute>
+                <ViewContacts />
               </PrivateRoute>
             }
           />

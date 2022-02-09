@@ -1,6 +1,21 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router";
 
 export default function Table(props) {
+  const navigate = useNavigate();
+  const handleRowClick = (e, name, address, phone, photo, email) => {
+    e.preventDefault();
+    navigate("/view", {
+      state: {
+        name: name,
+        address: address,
+        phone: phone,
+        photo: photo,
+        email: email,
+      },
+    });
+  };
+
   return (
     <table className="min-w-full border-collapse block md:table">
       <thead className="block md:table-header-group">
@@ -28,6 +43,16 @@ export default function Table(props) {
             <tr
               className="bg-gray-300 border border-grey-500 md:border-none block md:table-row"
               key={contact.id}
+              onClick={(e) =>
+                handleRowClick(
+                  e,
+                  contact.name,
+                  contact.address,
+                  contact.phone,
+                  contact.photo,
+                  contact.email
+                )
+              }
             >
               <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                 {contact.name}
