@@ -12,6 +12,7 @@ import {
   updateContactRequest,
   updateContactSuccess,
 } from "../../actions/contacts.actions";
+import Header from "../../Components/common/Header";
 
 export default function EditContacts(props) {
   const { state } = useLocation();
@@ -69,6 +70,7 @@ export default function EditContacts(props) {
 
   return (
     <div>
+      <Header />
       <div className={tailwindClasses.formContainer}>
         <AuthenticationTitle
           titleClass={tailwindClasses.formHeading}
