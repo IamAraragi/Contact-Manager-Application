@@ -43,27 +43,65 @@ export default function Table(props) {
             <tr
               className="bg-gray-300 border border-grey-500 md:border-none block md:table-row"
               key={contact.id}
-              onClick={(e) =>
-                handleRowClick(
-                  e,
-                  contact.name,
-                  contact.address,
-                  contact.phone,
-                  contact.photo,
-                  contact.email
-                )
-              }
             >
-              <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+              <td
+                className="p-2 md:border md:border-grey-500 text-left block md:table-cell"
+                onClick={(e) =>
+                  handleRowClick(
+                    e,
+                    contact.name,
+                    contact.address,
+                    contact.phone,
+                    contact.photo,
+                    contact.email
+                  )
+                }
+              >
                 {contact.name}
               </td>
-              <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+              <td
+                className="p-2 md:border md:border-grey-500 text-left block md:table-cell"
+                onClick={(e) =>
+                  handleRowClick(
+                    e,
+                    contact.name,
+                    contact.address,
+                    contact.phone,
+                    contact.photo,
+                    contact.email
+                  )
+                }
+              >
                 {contact.address}
               </td>
-              <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+              <td
+                className="p-2 md:border md:border-grey-500 text-left block md:table-cell"
+                onClick={(e) =>
+                  handleRowClick(
+                    e,
+                    contact.name,
+                    contact.address,
+                    contact.phone,
+                    contact.photo,
+                    contact.email
+                  )
+                }
+              >
                 {contact.email}
               </td>
-              <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+              <td
+                className="p-2 md:border md:border-grey-500 text-left block md:table-cell"
+                onClick={(e) =>
+                  handleRowClick(
+                    e,
+                    contact.name,
+                    contact.address,
+                    contact.phone,
+                    contact.photo,
+                    contact.email
+                  )
+                }
+              >
                 {contact.phone}
               </td>
               <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
