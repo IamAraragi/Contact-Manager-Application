@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import {
   loginFailure,
   loginRequest,
@@ -39,6 +40,9 @@ export default function Login() {
       <AuthenticationForm
         title="Log in to your account 🔐"
         buttonLabel="Log In"
+        bottomText1="Don't have an account?"
+        bottomText2="Register"
+        destination="/register"
         handleFormSubmit={handleFormSubmit}
       />
     </div>

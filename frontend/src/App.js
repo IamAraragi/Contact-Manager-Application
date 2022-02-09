@@ -6,14 +6,14 @@ import PrivateRoute from "./Components/common/PrivateRoute";
 import Register from "./Pages/Authentication/Register";
 import AddContacts from "./Pages/Contacts/AddContacts";
 import EditContacts from "./Pages/Contacts/EditContacts";
+import Error404 from "./Pages/Error404";
 
 function App() {
   return (
     <div className="App">
-      {/* <Login /> */}
       <BrowserRouter>
         <Routes>
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<Error404 />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
