@@ -2,6 +2,12 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
 
+/**
+ * Middleware to generate the hashed password
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 export const generateHashPassword = (req, res, next) => {
   bcrypt.hash(
     req.body.password,
@@ -19,6 +25,12 @@ export const generateHashPassword = (req, res, next) => {
   );
 };
 
+/**
+ * function to verify the password to the hashed password stored in the database
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 export const verifyPassword = (req, res, next) => {
   bcrypt.compare(req.body.password, req.user.password, function (err, result) {
     if (err) {
@@ -38,6 +50,12 @@ export const verifyPassword = (req, res, next) => {
   });
 };
 
+/**
+ * Function to generate the jwt token
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 export const generateToken = (req, res, next) => {
   jwt.sign(
     { id: req.user.id, email: req.user.email },
@@ -56,6 +74,12 @@ export const generateToken = (req, res, next) => {
   );
 };
 
+/**
+ * Function to verify if the user entered token is correct
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 export const verifyToken = (req, res, next) => {
   const token = req.headers["x-access-token"];
 
@@ -72,7 +96,6 @@ export const verifyToken = (req, res, next) => {
         message: "Unauthorized access",
       });
     }
-
     req.decodedUser = { id: decoded.id, email: decoded.email };
     next();
   });

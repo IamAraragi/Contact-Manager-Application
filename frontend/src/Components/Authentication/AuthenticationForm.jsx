@@ -2,6 +2,7 @@ import React from "react";
 import InputField from "../../Components/common/InputField";
 import Button from "../../Components/common/Button";
 import AuthenticationTitle from "../../Components/Authentication/AuthenticationTitle";
+import { Link } from "react-router-dom";
 
 export default function AuthenticationForm(props) {
   const tailwindClasses = {
@@ -38,6 +39,12 @@ export default function AuthenticationForm(props) {
           <Button buttonLabel={props.buttonLabel} />
         </div>
       </form>
+      <div className="flex justify-center items-center mt-6">
+        <span>{props.bottomText1}</span>
+        <span className="text-blue-400">
+          <Link to={props.destination}>{props.bottomText2}</Link>
+        </span>
+      </div>
     </div>
   );
 }

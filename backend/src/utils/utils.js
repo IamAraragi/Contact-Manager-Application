@@ -10,10 +10,20 @@ cloudinary.v2.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+/**
+ * Function to convert image buffer to base64
+ * @param {*} file
+ * @returns
+ */
 export const bufferToBase64 = (file) => {
   return parser.format(path.extname(file.originalname).toString(), file.buffer);
 };
 
+/**
+ * Function to upload file to cloudinary
+ * @param {*} file
+ * @returns
+ */
 export const uploadCloud = (file) => {
   return cloudinary.v2.uploader.upload(file);
 };

@@ -102,8 +102,11 @@ export default function Home() {
         handleEditButtonClick={handleEditButtonClick}
         handleFavoriteButtonClick={handleFavoriteButtonClick}
       />
-      <div>
-        <button onClick={(e) => addContactClickHandler(e)}>
+      <div className="flex justify-center items-center mt-6">
+        <button
+          className={`bg-green-300 py-2 px-4 text-sm rounded border border-green focus:outline-none`}
+          onClick={(e) => addContactClickHandler(e)}
+        >
           Create Contact
         </button>
       </div>

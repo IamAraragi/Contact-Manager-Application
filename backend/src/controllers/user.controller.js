@@ -1,6 +1,12 @@
 import * as UserService from "../services/user.service.js";
 import { StatusCodes } from "http-status-codes";
 
+/**
+ * Function to register the user
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 export const registerUser = async (req, res, next) => {
   try {
     const id = await UserService.registerUser(req.body);
@@ -13,6 +19,12 @@ export const registerUser = async (req, res, next) => {
   }
 };
 
+/**
+ * Function to get the user from their email
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 export const getUser = async (req, res, next) => {
   try {
     const user = await UserService.getUser(req.body.email);
@@ -26,6 +38,12 @@ export const getUser = async (req, res, next) => {
   }
 };
 
+/**
+ * Function to login the user
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 export const loginUser = async (req, res, next) => {
   res.status(StatusCodes.ACCEPTED).json({
     id: req.user.id,

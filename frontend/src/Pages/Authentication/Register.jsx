@@ -40,6 +40,9 @@ export default function Register() {
       <AuthenticationForm
         title="Register"
         buttonLabel="Register"
+        bottomText1="Already have an account?"
+        bottomText2="Login"
+        destination="/login"
         handleFormSubmit={handleFormSubmit}
       />
     </div>
